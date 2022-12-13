@@ -1,6 +1,6 @@
 site:
   title: Workitcop Docs
-  start_page: 0.42@workitcop::index.adoc
+  start_page: workitcop::index.adoc
 content:
   sources:
   - url: https://github.com/ydah/workitcop.git
