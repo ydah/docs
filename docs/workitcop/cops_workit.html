@@ -107,7 +107,7 @@
     <li><a href="cops_workit.html">Workit</a></li>
   </ul>
 </nav>
-  <div class="edit-this-page"><a href="https://github.com/ydah/workitcop/blob/v0.4.2/docs/modules/ROOT/pages/cops_workit.adoc">Edit this Page</a></div>
+  <div class="edit-this-page"><a href="https://github.com/ydah/workitcop/blob/v0.5.0/docs/modules/ROOT/pages/cops_workit.adoc">Edit this Page</a></div>
   </div>
   <div class="content">
 <aside class="toc sidebar" data-title="Contents" data-levels="2">
@@ -236,6 +236,45 @@ end</code></pre>
 <div class="paragraph">
 <p>Check for not pass expected response status code to check it against the corresponding schema explicitly.</p>
 </div>
+<div class="paragraph">
+<p>This cop is deprecated.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="workitcommitteeexpectedresponsestatuscode"><a class="anchor" href="#workitcommitteeexpectedresponsestatuscode"></a>Workit/CommitteeExpectedResponseStatusCode</h2>
+<div class="sectionbody">
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 20%;">
+<col style="width: 20%;">
+<col style="width: 20%;">
+<col style="width: 20%;">
+<col style="width: 20%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Enabled by default</th>
+<th class="tableblock halign-left valign-top">Safe</th>
+<th class="tableblock halign-left valign-top">Supports autocorrection</th>
+<th class="tableblock halign-left valign-top">Version Added</th>
+<th class="tableblock halign-left valign-top">Version Changed</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Disabled</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Yes</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Yes</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>Check if the status code is specified as an argument to the method of the Committee
+where the expected response status code is required.</p>
+</div>
 <div class="sect2">
 <h3 id="examples-2"><a class="anchor" href="#examples-2"></a>Examples</h3>
 <div class="listingblock">
@@ -244,14 +283,12 @@ end</code></pre>
 it 'something' do
   subject
   expect(response).to have_http_status 400
-  do_something
   assert_schema_conform
 end
 
 # good
 it 'something' do
   subject
-  do_something
   assert_schema_conform(400)
 end</code></pre>
 </div>
@@ -583,6 +620,60 @@ expect(a).not_to eq(b)</code></pre>
 </div>
 </div>
 <div class="sect1">
+<h2 id="workitrspecredundanthttpstatus"><a class="anchor" href="#workitrspecredundanthttpstatus"></a>Workit/RSpecRedundantHttpStatus</h2>
+<div class="sectionbody">
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 20%;">
+<col style="width: 20%;">
+<col style="width: 20%;">
+<col style="width: 20%;">
+<col style="width: 20%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Enabled by default</th>
+<th class="tableblock halign-left valign-top">Safe</th>
+<th class="tableblock halign-left valign-top">Supports autocorrection</th>
+<th class="tableblock halign-left valign-top">Version Added</th>
+<th class="tableblock halign-left valign-top">Version Changed</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Disabled</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Yes</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Yes</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>Check for validation of redundant response HTTP status codes.</p>
+</div>
+<div class="sect2">
+<h3 id="examples-7"><a class="anchor" href="#examples-7"></a>Examples</h3>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-ruby hljs" data-lang="ruby"># bad
+it 'something' do
+  subject
+  expect(response).to have_http_status 400
+  assert_schema_conform(400)
+end
+
+# good
+it 'something' do
+  subject
+  assert_schema_conform(400)
+end</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
 <h2 id="workitrestrictonsend"><a class="anchor" href="#workitrestrictonsend"></a>Workit/RestrictOnSend</h2>
 <div class="sectionbody">
 <table class="tableblock frame-all grid-all stretch">
@@ -616,7 +707,7 @@ expect(a).not_to eq(b)</code></pre>
 <p>Check for <code>RESTRICT_ON_SEND</code> is defined if <code>on_send</code> or <code>after_send</code> are defined.</p>
 </div>
 <div class="sect2">
-<h3 id="examples-7"><a class="anchor" href="#examples-7"></a>Examples</h3>
+<h3 id="examples-8"><a class="anchor" href="#examples-8"></a>Examples</h3>
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-ruby hljs" data-lang="ruby"># bad
